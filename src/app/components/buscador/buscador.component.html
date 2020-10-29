@@ -1,0 +1,32 @@
+<h1>Buscador Heroes</h1>
+<div class="row" *ngIf="heroe.length == 0">
+    <div class="col-md-12">
+        <div class="alert alert-danger" role="alert">
+            No se encontraron resultados para : {{ termino }}
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="heroe.length > 0">
+    <div class="col-md-12">
+        <small>Heroes de Marvel y DC</small>
+        <div class="card-columns">
+            <div class="card" *ngFor="let heroe of heroe;let i=index">
+                <img src="{{ heroe.img }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ heroe.nombre }}</h5>
+                    <p class="card-text">{{ heroe.bio }}</p>
+                    <p class="card-text"><small class="text-muted">Primera Aparicion{{ heroe.aparicion }}</small></p>
+                    <!--<a [routerLink]="['/heroe',i]" class="btn btn-outline-primary btn-block">Ver mas.....</a>-->
+                    <button class="btn btn-outline-primary btn-block" (click)="verHeroe(heroe.idx)">Mas Informacion...</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="heroe.length > 0">
+    <div class="col-md-12">
+        <div class="alert alert-success" role="alert">
+            Se encontraron : {{ heroe.length }} registros para : {{ termino }}
+        </div>
+    </div>
+</div>
